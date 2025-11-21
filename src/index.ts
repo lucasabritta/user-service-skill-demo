@@ -31,7 +31,7 @@ app.get('/users', async (req: Request, res: Response) => {
   console.log(req.query);
 
   const created = req.query.created;
-  let sortValue: SortOrder = 1; // Default order
+  let sortValue: SortOrder = 1; // Default ascending order
 
   if (created !== undefined) {
     if (created !== 'asc' && created !== 'desc') {
