@@ -1,3 +1,5 @@
+[![Run Tests](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/unit-tests.yml)
+
 # Backend Engineer Work Sample
 
 This project skeleton contains a basic Express setup one endpoint to create a user and one endpoint to fetch all users, as well as a basic empty unit test.
