@@ -31,12 +31,34 @@
     },
     {
       "name": "createUsers",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "98db22cf-43f1-43ea-b251-83c7da055764",
+            "exec": [
+              "pm.environment.set(\"randomStr\", Array.from({length:12},()=>\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?\".charAt(Math.floor(Math.random()*78))).join(''));"
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "406ff71c-9384-4596-875c-8e70d864b6a0",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "id": "50d4694d-c09b-40a2-bdd2-af1a0044d064",
       "request": {
         "method": "POST",
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"name\": \"some name\"\r\n}",
+          "raw": "{\r\n    \"name\": \"{{randomStr}}\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
