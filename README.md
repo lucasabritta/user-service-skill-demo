@@ -7,6 +7,8 @@ This project skeleton contains a basic Express setup one endpoint to create a us
 
 `npm test` executes the tests
 
+`npm run dev` starts the server with live reload
+
 ## Goal
 1. Adjust POST /users that it accepts a user and stores it in a database.
     * The user should have a unique id, a name, a unique email address and a creation date
