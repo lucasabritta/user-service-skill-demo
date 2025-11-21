@@ -4,16 +4,18 @@
   "description": "Basic setup to for the backend engineer test",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "mongo": "docker compose -f database/docker-compose.yml up -d",
+    "start": "npm run mongo && ts-node src/server.ts",
     "test": "set DEBUG=* && jest --testPathPattern=test --coverage",
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
+    "dev": "npm run mongo && ts-node-dev --respawn --transpile-only src/server.ts"
   },
   "author": "Lucas Abritta",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^8.20.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",

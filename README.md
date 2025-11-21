@@ -2,6 +2,11 @@
 
 This project skeleton contains a basic Express setup one endpoint to create a user and one endpoint to fetch all users, as well as a basic empty unit test.
 
+## Pre requisites
+
+1. Having docker installed
+    * https://www.docker.com/products/docker-desktop/
+
 ## Scripts 
 `npm start` starts the server
 
