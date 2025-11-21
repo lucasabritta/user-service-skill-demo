@@ -58,7 +58,7 @@
         "method": "POST",
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"name\": \"{{randomStr}}\"\r\n}",
+          "raw": "{\r\n    \"name\": \"{{randomStr}}\",\r\n    \"email\": \"{{randomStr}}@gmail.com\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
