@@ -6,8 +6,7 @@
   "scripts": {
     "mongo": "docker compose -f database/docker-compose.yml up -d",
     "start": "npm run mongo && ts-node src/server.ts",
-    "test": "set DEBUG=* && jest --testPathPattern=test --coverage",
-    "dev": "npm run mongo && ts-node-dev --respawn --transpile-only src/server.ts"
+    "test": "set DEBUG=* && jest --testPathPattern=test --coverage"
   },
   "author": "Lucas Abritta",
   "license": "ISC",
@@ -32,7 +31,6 @@
     "supertest": "^7.1.4",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^5.1.3"
   }
 }

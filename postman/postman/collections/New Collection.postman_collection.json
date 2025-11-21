@@ -1,0 +1,60 @@
+{
+  "info": {
+    "_postman_id": "dc86f89c-aaca-4ea3-9145-1a0d53889359",
+    "name": "Users",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "getUsers",
+      "id": "85cb2c62-7f48-4320-a33c-3ab34b064cdc",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:4111/users?created=asc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4111",
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "created",
+              "value": "asc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "createUsers",
+      "id": "50d4694d-c09b-40a2-bdd2-af1a0044d064",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"some name\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4111/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4111",
+          "path": [
+            "users"
+          ]
+        }
+      }
+    }
+  ]
+}
