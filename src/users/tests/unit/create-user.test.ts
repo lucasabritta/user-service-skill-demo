@@ -3,7 +3,7 @@ import { app } from '../../../app';
 import { User } from '../../models/user.model';
 import { describe, test, expect, jest } from '@jest/globals';
 
-jest.mock('../../models/users.model');
+jest.mock('../../models/user.model');
 
 const mockedUser = User as any;
 
