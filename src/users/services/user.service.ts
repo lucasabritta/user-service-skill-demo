@@ -1,5 +1,5 @@
 import { SortOrder } from 'mongoose';
-import { User } from '../models/users.model';
+import { User } from '../models/user.model';
 
 export async function createUser(data: any) {
     const { name, email } = data;

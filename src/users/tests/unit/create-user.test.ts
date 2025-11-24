@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { app } from '../../../app';
-import { User } from '../../models/users.model';
+import { User } from '../../models/user.model';
 import { describe, test, expect, jest } from '@jest/globals';
 
 jest.mock('../../models/users.model');

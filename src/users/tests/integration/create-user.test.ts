@@ -2,7 +2,7 @@ import '../../../testing/setupDatabase';
 
 import request from 'supertest';
 import { app } from '../../../app';
-import { User } from '../../models/users.model';
+import { User } from '../../models/user.model';
 import { describe, test, expect } from '@jest/globals';
 
 describe('Create users with real DB', () => {
