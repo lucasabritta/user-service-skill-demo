@@ -1,9 +1,9 @@
 import request from 'supertest';
-import { app } from '../src';
-import { User } from '../database/models/users';
+import { app } from '../../app';
+import { User } from '../models/users.model';
 import { describe, test, beforeEach, expect, jest } from '@jest/globals';
 
-jest.mock('../database/models/users');
+jest.mock('../models/users.model');
 
 const mockedUser = User as any;
 
