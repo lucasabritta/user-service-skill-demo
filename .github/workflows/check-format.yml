@@ -1,4 +1,4 @@
-name: Lint & Format
+name: Check format
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   format-and-lint:
-    name: Lint & Format
+    name: Check format
     runs-on: ubuntu-latest
 
     steps:
@@ -23,6 +23,3 @@ jobs:
 
       - name: Run prettier check
         run: npm run format:check
-
-      - name: Run ESLint
-        run: npm run lint

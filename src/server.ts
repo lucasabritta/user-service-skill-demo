@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import { app } from './app';
-import { connectDatabase } from '../infrastructure/database/mongo';
+import { connectDatabase } from '../infrastructure/database/mongo-connection';
 
 dotenv.config();
 
@@ -13,4 +13,4 @@ async function start() {
     });
 }
 
-start();
+void start();
