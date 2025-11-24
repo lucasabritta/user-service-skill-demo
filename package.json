@@ -9,8 +9,8 @@
         "test": "set DEBUG=* && jest --testPathPattern=test --coverage --runInBand",
         "format": "prettier --write \"**/*.{ts,js,json,md,css}\"",
         "format:check": "prettier --check \"**/*.{ts,js,json,md,css}\"",
-        "lint": "eslint 'src/**/*.{ts,js}'",
-        "lint:fix": "eslint 'src/**/*.{ts,js}' --fix"
+        "lint": "eslint \"src/**/*.{ts,js}\"",
+        "lint:fix": "eslint \"src/**/*.{ts,js}\" --fix"
     },
     "author": "Lucas Abritta",
     "license": "ISC",
@@ -24,6 +24,7 @@
         "@types/cors": "^2.8.13",
         "@types/express": "^4.17.17",
         "@types/jest": "^29.5.2",
+        "@types/supertest": "^6.0.3",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
         "eslint": "^8.57.1",

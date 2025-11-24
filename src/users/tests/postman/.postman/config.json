@@ -1,12 +1,12 @@
 {
-  "workspace": {
-    "id": "482bd1a8-92d6-4f18-896f-9e5351188174"
-  },
-  "entities": {
-    "collections": [],
-    "environments": [],
-    "specs": [],
-    "flows": [],
-    "globals": []
-  }
+    "workspace": {
+        "id": "482bd1a8-92d6-4f18-896f-9e5351188174"
+    },
+    "entities": {
+        "collections": [],
+        "environments": [],
+        "specs": [],
+        "flows": [],
+        "globals": []
+    }
 }

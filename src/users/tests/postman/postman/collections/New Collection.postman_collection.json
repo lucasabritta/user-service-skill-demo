@@ -1,82 +1,72 @@
 {
-  "info": {
-    "_postman_id": "dc86f89c-aaca-4ea3-9145-1a0d53889359",
-    "name": "Users",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "getUsers",
-      "id": "85cb2c62-7f48-4320-a33c-3ab34b064cdc",
-      "request": {
-        "method": "GET",
-        "url": {
-          "raw": "http://localhost:4111/users?created=asc",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "4111",
-          "path": [
-            "users"
-          ],
-          "query": [
-            {
-              "key": "created",
-              "value": "asc"
-            }
-          ]
-        }
-      }
+    "info": {
+        "_postman_id": "dc86f89c-aaca-4ea3-9145-1a0d53889359",
+        "name": "Users",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    {
-      "name": "createUsers",
-      "event": [
+    "item": [
         {
-          "listen": "prerequest",
-          "script": {
-            "id": "98db22cf-43f1-43ea-b251-83c7da055764",
-            "exec": [
-              "pm.environment.set(\"randomStr\", Array.from({length:12},()=>\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?\".charAt(Math.floor(Math.random()*78))).join(''));"
-            ],
-            "type": "text/javascript"
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "406ff71c-9384-4596-875c-8e70d864b6a0",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "id": "50d4694d-c09b-40a2-bdd2-af1a0044d064",
-      "request": {
-        "method": "POST",
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\": \"{{randomStr}}\",\r\n    \"email\": \"{{randomStr}}@gmail.com\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+            "name": "getUsers",
+            "id": "85cb2c62-7f48-4320-a33c-3ab34b064cdc",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:4111/users?created=asc",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "4111",
+                    "path": ["users"],
+                    "query": [
+                        {
+                            "key": "created",
+                            "value": "asc"
+                        }
+                    ]
+                }
             }
-          }
         },
-        "url": {
-          "raw": "http://localhost:4111/users",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "4111",
-          "path": [
-            "users"
-          ]
+        {
+            "name": "createUsers",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "id": "98db22cf-43f1-43ea-b251-83c7da055764",
+                        "exec": [
+                            "pm.environment.set(\"randomStr\", Array.from({length:12},()=>\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?\".charAt(Math.floor(Math.random()*78))).join(''));"
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "406ff71c-9384-4596-875c-8e70d864b6a0",
+                        "exec": [""],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "id": "50d4694d-c09b-40a2-bdd2-af1a0044d064",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"name\": \"{{randomStr}}\",\r\n    \"email\": \"{{randomStr}}@gmail.com\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:4111/users",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "4111",
+                    "path": ["users"]
+                }
+            }
         }
-      }
-    }
-  ]
+    ]
 }
