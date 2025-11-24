@@ -1,12 +1,12 @@
 import request from 'supertest';
-import { app } from '../../app';
-import { User } from '../models/users.model';
+import { app } from '../../../app';
+import { User } from '../../models/users.model';
 import { describe, test, beforeEach, expect, jest } from '@jest/globals';
 
-jest.mock('../models/users.model');
+jest.mock('../../models/users.model');
 const mockedUser = User as any;
 
-describe('GET /users', () => {
+describe('Get users', () => {
   const fakeUsers = [{ name: 'Alice' }, { name: 'Bob' }];
 
   beforeEach(() => {

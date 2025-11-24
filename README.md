@@ -9,6 +9,9 @@ This project skeleton contains a basic Express setup one endpoint to create a us
 1. Having docker installed
     * https://www.docker.com/products/docker-desktop/
 
+1. Having Node installed
+    * https://nodejs.org/en/download
+
 ## Scripts 
 `npm start` starts the server
 
