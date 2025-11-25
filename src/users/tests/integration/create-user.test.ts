@@ -14,6 +14,7 @@ describe('Create users with real DB', () => {
         expect(response.status).toBe(201);
         expect(response.body.name).toBe('Lucas');
         expect(response.body.email).toBe('lucas@example.com');
+        expect(response.body.createdAt).toBeDefined();
 
         const userInDb = await User.findOne({ email: 'lucas@example.com' });
         expect(userInDb).not.toBeNull();
