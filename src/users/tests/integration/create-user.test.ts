@@ -6,7 +6,7 @@ import { User } from '../../models/user.model';
 import { describe, test, expect } from '@jest/globals';
 
 describe('Create users with real DB', () => {
-    test('POST /users should return 201 and store the user', async () => {
+    test('POST /users should return 201 and store the user if valid data is provided', async () => {
         const response = await request(app)
             .post('/users')
             .send({ name: 'Lucas', email: 'lucas@example.com' });
@@ -17,6 +17,15 @@ describe('Create users with real DB', () => {
 
         const userInDb = await User.findOne({ email: 'lucas@example.com' });
         expect(userInDb).not.toBeNull();
+    });
+
+    test('POST /users should return 400 when email is invalid', async () => {
+        const userData = { name: 'Lucas', email: 'not-an-email' };
+
+        const response = await request(app).post('/users').send(userData);
+
+        expect(response.status).toBe(400);
+        expect(response.body).toEqual({ error: 'Invalid email format' });
     });
 
     test('POST /users should return 400 when email already exists', async () => {
