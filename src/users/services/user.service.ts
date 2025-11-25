@@ -1,4 +1,5 @@
 import { SortOrder } from 'mongoose';
+import isEmail from 'validator/lib/isEmail';
 import { User } from '../models/user.model';
 
 export async function createUser(data: any) {
@@ -10,6 +11,10 @@ export async function createUser(data: any) {
 
     if (!email) {
         throw { status: 400, message: 'The attribute "email" is required' };
+    }
+
+    if (!isEmail(email)) {
+        throw { status: 400, message: 'Invalid email format' };
     }
 
     return User.create({ name, email });
