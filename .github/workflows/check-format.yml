@@ -1,25 +1,25 @@
 name: Check format
 
 on:
-  push:
-    branches: [master]
-  pull_request:
+    push:
+        branches: [master]
+    pull_request:
 
 jobs:
-  format-and-lint:
-    name: Check format
-    runs-on: ubuntu-latest
+    format-and-lint:
+        name: Check format
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
-        with:
-            node-version: 18
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
 
-      - name: Install dependencies
-        run: npm install
+            - name: Install dependencies
+              run: npm install
 
-      - name: Run prettier check
-        run: npm run format:check
+            - name: Run prettier check
+              run: npm run format:check

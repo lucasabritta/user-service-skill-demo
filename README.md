@@ -15,9 +15,31 @@ This project skeleton contains a basic Express setup one endpoint to create a us
 
 ## Scripts
 
-`npm start` starts the server
+### Development
 
-`npm test` executes the tests
+`npm run dev`  
+Starts the server using ts-node and launches the local MongoDB defined in `infrastructure/database`.
+
+### Production
+
+`npm run build`  
+Compiles TypeScript into the `dist/` folder.
+
+`npm start`  
+Runs the compiled server from `dist/server.js`.
+
+### Tests
+
+`npm test`  
+Runs the entire test suite with coverage enabled.
+
+### Formatting
+
+`npm run format`  
+Formats all supported files with Prettier.
+
+`npm run format:check`  
+Validates formatting without applying changes.
 
 ## Goal
 

@@ -1,17 +1,31 @@
 {
     "compilerOptions": {
+        "skipLibCheck": true,
         "allowJs": true,
         "forceConsistentCasingInFileNames": true,
         "incremental": true,
         "esModuleInterop": true,
         "module": "commonjs",
         "moduleResolution": "node",
+        "rootDir": ".",
         "resolveJsonModule": true,
         "outDir": "./dist",
         "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
-        "target": "ES6",
-        "types": ["node"]
+        "target": "ES2022",
+        "types": ["node"],
+        "lib": ["ES2022"]
     },
-    "include": ["./src/**/*.ts"]
+    "include": ["src"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "test",
+        "tests",
+        "testing",
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "src/**/*.test.ts",
+        "src/**/*.spec.ts"
+    ]
 }
