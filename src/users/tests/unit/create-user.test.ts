@@ -31,4 +31,13 @@ describe('Create Users', () => {
         expect(response.status).toBe(400);
         expect(response.body).toEqual({ error: 'The attribute "email" is required' });
     });
+
+    test('POST /users should return 400 when email is invalid', async () => {
+        const userData = { name: 'Lucas', email: 'not-an-email' };
+
+        const response = await request(app).post('/users').send(userData);
+
+        expect(response.status).toBe(400);
+        expect(response.body).toEqual({ error: 'Invalid email format' });
+    });
 });

@@ -20,15 +20,6 @@ describe('Create users with real DB', () => {
         expect(userInDb).not.toBeNull();
     });
 
-    test('POST /users should return 400 when email is invalid', async () => {
-        const userData = { name: 'Lucas', email: 'not-an-email' };
-
-        const response = await request(app).post('/users').send(userData);
-
-        expect(response.status).toBe(400);
-        expect(response.body).toEqual({ error: 'Invalid email format' });
-    });
-
     test('POST /users should return 400 when email already exists', async () => {
         const userData = { name: 'Lucas', email: 'lucas@example.com' };
 
