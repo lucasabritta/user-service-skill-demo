@@ -24,7 +24,7 @@ export async function listUsers(req: Request, res: Response, next: NextFunction)
 
 export async function deleteUser(req: Request, res: Response, next: NextFunction) {
     try {
-        const users = await UserService.deleteUser(req.query);
+        const users = await UserService.deleteUser(req.params);
         res.status(200).send(users);
     } catch (err) {
         next(err);

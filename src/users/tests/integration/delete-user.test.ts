@@ -12,7 +12,7 @@ describe('Delete users with real DB', () => {
             email: 'lucas@example.com',
         });
 
-        const response = await request(app).delete(`/users?id=${user._id}`);
+        const response = await request(app).delete(`/users/${user._id}`);
 
         expect(response.status).toBe(200);
         expect(response.body._id).toBe(user._id.toString());
@@ -24,7 +24,7 @@ describe('Delete users with real DB', () => {
     test('DELETE /users should return 404 when user does not exist', async () => {
         const fakeId = '507f1f77bcf86cd799439011';
 
-        const response = await request(app).delete(`/users?id=${fakeId}`);
+        const response = await request(app).delete(`/users/${fakeId}`);
 
         expect(response.status).toBe(404);
         expect(response.body).toEqual({ error: 'User not found' });
