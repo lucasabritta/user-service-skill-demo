@@ -33,3 +33,43 @@ export async function listUsers(query: any) {
 
     return User.find().sort({ createdAt: sortValue });
 }
+
+export async function updateUser(params: any, data: any) {
+    const { userId } = params;
+    const { name, email } = data;
+
+    if (!userId) {
+        throw { status: 400, message: 'The attribute "userId" is required' };
+    }
+
+    if (!name && !email) {
+        throw { status: 400, message: 'At least one field must be provided' };
+    }
+
+    if (email && !isEmail(email)) {
+        throw { status: 400, message: 'Invalid email format' };
+    }
+
+    if (email) {
+        const existing = await User.findOne({
+            email,
+            _id: { $ne: userId },
+        });
+
+        if (existing) {
+            throw { status: 400, message: 'Email already exists' };
+        }
+    }
+
+    const updated = await User.findByIdAndUpdate(
+        userId,
+        { ...(name && { name }), ...(email && { email }) },
+        { new: true }
+    );
+
+    if (!updated) {
+        throw { status: 404, message: 'User not found' };
+    }
+
+    return updated;
+}
