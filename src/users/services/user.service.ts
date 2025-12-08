@@ -33,3 +33,19 @@ export async function listUsers(query: any) {
 
     return User.find().sort({ createdAt: sortValue });
 }
+
+export async function deleteUser(params: any) {
+    const { userId } = params;
+
+    if (!userId) {
+        throw { status: 400, message: 'The attribute "userId" is required' };
+    }
+
+    const deleted = await User.findByIdAndDelete(userId);
+
+    if (!deleted) {
+        throw { status: 404, message: 'User not found' };
+    }
+
+    return deleted;
+}
