@@ -22,6 +22,15 @@ export async function listUsers(req: Request, res: Response, next: NextFunction)
     }
 }
 
+export async function updateUser(req: Request, res: Response, next: NextFunction) {
+    try {
+        const user = await UserService.updateUser(req.params, req.body);
+        res.status(200).json(user);
+    } catch (err) {
+        next(err);
+    }
+}
+
 export async function deleteUser(req: Request, res: Response, next: NextFunction) {
     try {
         const users = await UserService.deleteUser(req.params);
