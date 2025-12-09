@@ -8,7 +8,7 @@
         "dev": "npm run mongo:down && npm run mongo:up && npm run docker:delete && npm run docker:build && npm run docker:run",
         "docker:delete": "docker rm -f user-service-container",
         "docker:build": "docker build -t user-service .",
-        "docker:run": "docker run --name user-service-container -p 4111:4111 user-service",
+        "docker:run": "docker run --name user-service-container -p 4111:4111 -e PORT=4111 user-service",
         "mongo:up": "docker compose -f infrastructure/database/docker-compose.yml up -d",
         "mongo:down": "docker compose -f infrastructure/database/docker-compose.yml down -v",
         "test": "set DEBUG=* && jest --testPathPattern=test --coverage --runInBand",

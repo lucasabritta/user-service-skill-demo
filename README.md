@@ -10,9 +10,6 @@ This project skeleton contains a basic Express setup one endpoint to create a us
 
     - https://www.docker.com/products/docker-desktop/
 
-1. Having Node installed
-    - https://nodejs.org/en/download
-
 ## Scripts
 
 ### Development
