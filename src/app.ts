@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 
 import { userRouter } from './users/routes/user.route';
-import { errorHandler } from './error-handler';
+import { errorHandler } from './utils/error-handler';
 
 const app = express();
 app.use(cors()).use(express.json()).options('*', cors());
