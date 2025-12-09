@@ -5,11 +5,12 @@
     "main": "index.js",
     "scripts": {
         "build": "tsc",
-        "dev": "npm run mongo && ts-node src/server.ts",
-        "start": "node dist/server.js",
+        "dev": "npm run mongo:down && npm run mongo:up && npm run docker:delete && npm run docker:build && npm run docker:run",
+        "docker:delete": "docker rm -f user-service-container",
         "docker:build": "docker build -t user-service .",
-        "docker:run": "docker run -p 3111:3111 user-service",
-        "mongo": "docker compose -f infrastructure/database/docker-compose.yml up -d",
+        "docker:run": "docker run --name user-service-container -p 4111:4111 user-service",
+        "mongo:up": "docker compose -f infrastructure/database/docker-compose.yml up -d",
+        "mongo:down": "docker compose -f infrastructure/database/docker-compose.yml down -v",
         "test": "set DEBUG=* && jest --testPathPattern=test --coverage --runInBand",
         "format": "prettier --write \"**/*.{ts,js,json,md,css}\"",
         "format:check": "prettier --check \"**/*.{ts,js,json,md,css}\""

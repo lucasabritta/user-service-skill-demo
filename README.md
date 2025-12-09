@@ -18,15 +18,15 @@ This project skeleton contains a basic Express setup one endpoint to create a us
 ### Development
 
 `npm run dev`  
-Starts the server using ts-node and launches the local MongoDB defined in `infrastructure/database`.
+Starts the server and launches the local MongoDB defined in `infrastructure/database`.
 
 ### Production
 
-`npm run build`  
-Compiles TypeScript into the `dist/` folder.
+`npm run docker:build`  
+Builds the Docker image using the project Dockerfile.
 
-`npm start`  
-Runs the compiled server from `dist/server.js`.
+`npm run docker:run`  
+Starts a Docker container from the built image and exposes the service.
 
 ### Tests
 
@@ -47,3 +47,7 @@ Validates formatting without applying changes.
     - The user should have a unique id, a name, a unique email address and a creation date
 2. Adjust GET /users that it returns (all) users from the database.
     - This endpoint should be able to receive a query parameter `created` which sorts users by creation date ascending or descending.
+3. Adjust DELETE /users/:userId to delete the user from the database
+    - Deletes a single user from the database based on the provided userId route parameter.
+4. Adjust PUT /users/:userId to update the user from the database
+    - This endpoint should be able to receive as body the `name` and/or `email` which will update the user.
