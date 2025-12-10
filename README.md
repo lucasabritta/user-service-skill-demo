@@ -1,4 +1,4 @@
-[![Run Tests](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/unit-tests.yml) [![Check format](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/check-format.yml/badge.svg?branch=master)](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/check-format.yml)
+[![Run Tests](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/unit-tests.yml) [![Check format](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/check-format.yml/badge.svg?branch=master)](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/check-format.yml) [![Build artifacts](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/build-artifacts.yml/badge.svg)](https://github.com/lucasabritta/user-service-skill-demo/actions/workflows/build-artifacts.yml)
 
 # Backend Engineer Work Sample
 
