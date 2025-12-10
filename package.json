@@ -11,7 +11,7 @@
         "docker:run": "docker run --name user-service-container -p 4111:4111 -e PORT=4111 user-service",
         "mongo:up": "docker compose -f infrastructure/database/docker-compose.yml up -d",
         "mongo:down": "docker compose -f infrastructure/database/docker-compose.yml down -v",
-        "test": "set DEBUG=* && jest --testPathPattern=test --coverage --runInBand",
+        "test": "jest --testPathPattern=test --coverage --runInBand",
         "format": "prettier --write \"**/*.{ts,js,json,md,css}\"",
         "format:check": "prettier --check \"**/*.{ts,js,json,md,css}\""
     },

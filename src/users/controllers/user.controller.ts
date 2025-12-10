@@ -24,7 +24,7 @@ export async function listUsers(req: Request, res: Response, next: NextFunction)
 
 export async function updateUser(req: Request, res: Response, next: NextFunction) {
     try {
-        const user = await UserService.updateUser(req.params, req.body);
+        const user = await UserService.updateUser(req.params?.userId, req.body);
         res.status(200).json(user);
     } catch (err) {
         next(err);
@@ -33,7 +33,7 @@ export async function updateUser(req: Request, res: Response, next: NextFunction
 
 export async function deleteUser(req: Request, res: Response, next: NextFunction) {
     try {
-        const users = await UserService.deleteUser(req.params);
+        const users = await UserService.deleteUser(req.params?.userId);
         res.status(200).send(users);
     } catch (err) {
         next(err);

@@ -35,7 +35,7 @@ describe('Update Users', () => {
     });
 
     test('throws 400 when userId is missing', async () => {
-        await expect(updateUser({}, {})).rejects.toEqual({
+        await expect(updateUser('', {})).rejects.toEqual({
             status: 400,
             message: 'The attribute "userId" is required',
         });

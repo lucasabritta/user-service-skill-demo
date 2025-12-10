@@ -24,7 +24,7 @@ describe('Delete Users', () => {
     });
 
     test('throws 400 when userId is missing', async () => {
-        await expect(deleteUser({})).rejects.toEqual({
+        await expect(deleteUser('')).rejects.toEqual({
             status: 400,
             message: 'The attribute "userId" is required',
         });
