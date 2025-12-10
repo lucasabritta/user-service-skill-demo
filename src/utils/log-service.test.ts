@@ -53,4 +53,20 @@ describe('logger full coverage', () => {
         expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('ERROR'), { c: 3 });
         expect(debugSpy).toHaveBeenCalledWith(expect.stringContaining('DEBUG'), { d: 4 });
     });
+
+    it('fails because objects are printed as [object Object]', () => {
+        const obj = { foo: 'bar', nested: { x: 1 } };
+
+        logger.error(obj);
+
+        expect(errorSpy).toHaveBeenCalled();
+
+        const logged = errorSpy.mock.calls[0][0] + ' ' + errorSpy.mock.calls[0].slice(1).join(' ');
+
+        expect(logged).toContain('foo');
+        expect(logged).toContain('nested');
+        expect(logged).toContain('x');
+
+        expect(logged).not.toContain('[object Object]');
+    });
 });
