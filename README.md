@@ -15,15 +15,15 @@ This project skeleton contains a basic Express setup one endpoint to create a us
 ### Development
 
 `npm run dev`  
-Starts the server and launches the local MongoDB defined in `infrastructure/database`.
+Builds and starts both the application and MongoDB services using docker-compose. The root `docker-compose.yml` orchestrates both services, including the database configuration from `infrastructure/database/docker-compose.yml`.
 
-### Production
+### Docker Commands
 
-`npm run docker:build`  
-Builds the Docker image using the project Dockerfile.
+`npm run docker:up`  
+Starts the application and database services in detached mode.
 
-`npm run docker:run`  
-Starts a Docker container from the built image and exposes the service.
+`npm run docker:down`  
+Stops and removes all containers and volumes.
 
 ### Tests
 

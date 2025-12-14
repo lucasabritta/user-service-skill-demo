@@ -1,0 +1,21 @@
+include:
+    - path: infrastructure/database/docker-compose.yml
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: user-service-container
+        ports:
+            - '4111:4111'
+        environment:
+            - PORT=4111
+            - MONGO_URI=mongodb://mongo:27017/mydb
+        depends_on:
+            mongo:
+                condition: service_healthy
+        restart: unless-stopped
+
+volumes:
+    mongo_data:

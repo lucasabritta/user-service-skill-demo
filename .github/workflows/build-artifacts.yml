@@ -21,5 +21,91 @@ jobs:
             - name: Install dependencies
               run: npm install
 
-            - name: Build Docker image
-              run: npm run docker:build
+            - name: Build and start services
+              run: docker compose up --build -d
+
+            - name: Wait for services to be ready
+              run: |
+                  echo "Waiting for MongoDB to be healthy..."
+                  timeout 60 bash -c 'until docker compose ps mongo | grep -q "healthy"; do sleep 2; done'
+                  echo "Waiting for app to be ready..."
+                  timeout 60 bash -c 'until curl -f http://localhost:4111/users > /dev/null 2>&1; do sleep 2; done'
+                  echo "Services are ready!"
+
+            - name: Integration tests - Create user
+              run: |
+                  echo "1. Creating user..."
+                  RESPONSE=$(curl -s -X POST http://localhost:4111/users \
+                      -H "Content-Type: application/json" \
+                      -d '{"name":"Test User","email":"test@example.com"}')
+                  echo "Response: $RESPONSE"
+                  USER_ID=$(echo $RESPONSE | grep -o '"_id":"[^"]*' | head -1 | cut -d'"' -f4 || echo "")
+                  if [ -z "$USER_ID" ]; then
+                      echo "Failed to create user or extract USER_ID"
+                      echo "Response was: $RESPONSE"
+                      exit 1
+                  fi
+                  echo "USER_ID=$USER_ID" >> $GITHUB_ENV
+                  echo "Created user with ID: $USER_ID"
+
+            - name: Integration tests - Get user
+              run: |
+                  echo "2. Getting user..."
+                  RESPONSE=$(curl -s -X GET http://localhost:4111/users)
+                  echo "Response: $RESPONSE"
+                  if ! echo "$RESPONSE" | grep -q "Test User"; then
+                      echo "Failed to get user"
+                      exit 1
+                  fi
+
+            - name: Integration tests - Update user
+              run: |
+                  echo "3. Updating user..."
+                  RESPONSE=$(curl -s -X PUT http://localhost:4111/users/$USER_ID \
+                      -H "Content-Type: application/json" \
+                      -d '{"name":"Updated User","email":"updated@example.com"}')
+                  echo "Response: $RESPONSE"
+                  if ! echo "$RESPONSE" | grep -q "Updated User"; then
+                      echo "Failed to update user"
+                      exit 1
+                  fi
+
+            - name: Integration tests - Get updated user
+              run: |
+                  echo "4. Getting updated user..."
+                  RESPONSE=$(curl -s -X GET http://localhost:4111/users)
+                  echo "Response: $RESPONSE"
+                  if ! echo "$RESPONSE" | grep -q "Updated User"; then
+                      echo "Failed to get updated user"
+                      exit 1
+                  fi
+
+            - name: Integration tests - Delete user
+              run: |
+                  echo "5. Deleting user..."
+                  RESPONSE=$(curl -s -X DELETE http://localhost:4111/users/$USER_ID)
+                  echo "Response: $RESPONSE"
+                  if ! echo "$RESPONSE" | grep -q "Updated User"; then
+                      echo "Failed to delete user"
+                      exit 1
+                  fi
+
+            - name: Integration tests - Verify user deleted
+              run: |
+                  echo "6. Verifying user is deleted..."
+                  RESPONSE=$(curl -s -X GET http://localhost:4111/users)
+                  echo "Response: $RESPONSE"
+                  if echo "$RESPONSE" | grep -q "Updated User"; then
+                      echo "User still exists after deletion"
+                      exit 1
+                  fi
+                  TRIMMED=$(echo "$RESPONSE" | tr -d '[:space:]')
+                  if [ "$TRIMMED" != "[]" ] && [ -n "$TRIMMED" ]; then
+                      echo "Unexpected response: $RESPONSE"
+                      exit 1
+                  fi
+                  echo "User successfully deleted and verified"
+
+            - name: Cleanup
+              if: always()
+              run: docker compose down -v
